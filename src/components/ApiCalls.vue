@@ -17,7 +17,7 @@
   </div>
 
   <div class="pokeimage" v-if="!noErrMsg" > 
-    <img src="src/assets/pokeball.png" alt="pokeballs" width="300" height="140" >
+    <!-- <img src="public/pokeball.png" alt="pokeballs" width="300" height="140" > -->
     <p>Try adding the name of a pokémon.</p>
   </div>
 </template>
