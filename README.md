@@ -1,6 +1,6 @@
 # pokedex
 
-This template should help get you started developing with Vue 3 in Vite.
+Simple Pokédex made with the Pokemon API and Vue 3. The site is live here: https://vue3pokedex.netlify.app/
 
 ## Recommended IDE Setup
 
