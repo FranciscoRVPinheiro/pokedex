@@ -16,9 +16,12 @@
       <p><em>{{ pokemons.weight / 10 }} kg, {{ pokemons.height * 10}} cm</em></p>
   </div>
 
-  <div class="pokeimage" v-if="!noErrMsg" > 
-    <!-- <img src="public/pokeball.png" alt="pokeballs" width="300" height="140" > -->
-    <p>Try adding the name of a pokémon.</p>
+  <div class="pokeimage" v-if="noErrMsg === null" > 
+    <p>Searching...</p>
+  </div>
+  
+  <div class="pokeimage" v-if="notFound" > 
+    <p>Pokémon not found. Try again.</p>
   </div>
 </template>
 
@@ -29,17 +32,31 @@ import axios from 'axios'
 let name = ref('')
 let pokemons = ref([])
 let noErrMsg = ref(false)
+let notFound = ref(false)
 
-function apiCall() { axios.get(`https://pokeapi.co/api/v2/pokemon/${name.value.toLowerCase()}`)
-      .then(response => {
-          pokemons.value = response.data
-          noErrMsg.value = true
-      })
-      .catch(error => {
-          console.log(error.response)   
-          noErrMsg.value = false
-      })
-}  
+// function apiCall() { axios.get(`https://pokeapi.co/api/v2/pokemon/${name.value.toLowerCase()}`)
+//       .then(response => {
+//           pokemons.value = response.data
+//           noErrMsg.value = true
+//       })
+//       .catch(error => {
+//           console.log(error.response)   
+//           noErrMsg.value = false
+//       })
+// }  
+
+const apiCall = async () => {
+  noErrMsg.value = null
+  notFound.value = false
+  try {
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.value.toLowerCase()}`)
+    pokemons.value = response.data 
+    noErrMsg.value = true
+  } catch {
+    noErrMsg.value = false
+    notFound.value = true
+  } 
+}
 </script>
 
 <style>
