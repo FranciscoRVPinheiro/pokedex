@@ -41,9 +41,10 @@ const apiCall = async () => {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.value.toLowerCase()}`)
     pokemons.value = response.data 
     noErrMsg.value = true
-  } catch {
+  } catch(err) {
     noErrMsg.value = false
     notFound.value = true
+    console.log(err)
   } 
 }
 </script>
