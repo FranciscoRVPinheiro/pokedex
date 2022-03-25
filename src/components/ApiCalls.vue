@@ -50,7 +50,6 @@ const apiCall = async () => {
 
 <style>
 button {
-  font-family: 'Press Start 2P', cursive;
   height: 25px;
   margin: 10px;
   border-radius: 5px;
