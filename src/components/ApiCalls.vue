@@ -34,17 +34,6 @@ let pokemons = ref([])
 let noErrMsg = ref(false)
 let notFound = ref(false)
 
-// function apiCall() { axios.get(`https://pokeapi.co/api/v2/pokemon/${name.value.toLowerCase()}`)
-//       .then(response => {
-//           pokemons.value = response.data
-//           noErrMsg.value = true
-//       })
-//       .catch(error => {
-//           console.log(error.response)   
-//           noErrMsg.value = false
-//       })
-// }  
-
 const apiCall = async () => {
   noErrMsg.value = null
   notFound.value = false
